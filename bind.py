@@ -19,10 +19,10 @@ possible commands:
   3 - deploy_cert -- do nothing! you have to do this manually!
 """
 command = argv[1]
-domain = argv[2]
-token = argv[4]
 
 if command == "deploy_challenge":
+    domain = argv[2]
+    token = argv[4]
     for nameserver in nameservers:
         print(f" + Deploying challenge record to {nameserver}...")
         batch_file_path = f"/tmp/{nameserver}_{domain}_nsupdate.tmp"
@@ -38,6 +38,7 @@ send
     print(" + Challenge deployed!")
 
 elif command == "clean_challenge":
+    domain = argv[2]
     for nameserver in nameservers:
         print(f" + Cleaning up challenge record on {nameserver}...")
         batch_file_path = f"/tmp/{nameserver}_{domain}_nsupdate.clean.tmp"
